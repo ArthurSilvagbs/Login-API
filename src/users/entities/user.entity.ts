@@ -8,16 +8,16 @@ export class User {
   @Column({ name: 'nome', nullable: false, length: 255 })
   nome: string;
 
-  @Column({ name: 'nome', nullable: false, length: 100 })
+  @Column({ name: 'email', nullable: false, length: 100 })
   email: string;
 
-  @Column({ name: 'nome', nullable: false, length: 14 })
+  @Column({ name: 'cpf`', nullable: false, length: 14 })
   cpf: string;
 
-  @Column({ name: 'nome', length: 20 })
+  @Column({ name: 'celular', length: 20, nullable: true })
   celular?: string;
 
-  @Column({ name: 'nome', nullable: false, length: 255 })
+  @Column({ name: 'senha', nullable: false, length: 255 })
   senha: string;
 
   @CreateDateColumn({ name: 'criada_em' })
