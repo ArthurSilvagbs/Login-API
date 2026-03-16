@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, UseGuards, Request } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiBadRequestResponse, ApiCreatedResponse, ApiNoContentResponse, ApiNotFoundResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @ApiTags('Users')
 @Controller('users')
@@ -43,11 +44,12 @@ export class UsersController {
   }
 
   @Delete(':id')
+  @UseGuards(AuthGuard)
   @HttpCode(204)
   @ApiOperation({ summary: 'Deletar usuário via id' })
   @ApiNoContentResponse({ description: 'Usuário deletado com sucesso.' })
   @ApiBadRequestResponse({ description: 'Id inserido não encontrado.' })
-  remove(@Param('id') id: string) {
+  remove(@Request() req, @Param('id') id: string) {
     return this.usersService.remove(id);
   }
 }
