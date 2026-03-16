@@ -2,8 +2,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "nome": "Teste2",
-  "email": "teste2@teste.com",
-  "cpf": "12345678900",
+  "nome": "Teste3",
+  "email": "teste3@teste.com",
+  "cpf": "12345678903",
   "senha": "senha123"
 }
